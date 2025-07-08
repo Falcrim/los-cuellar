@@ -5,3 +5,4 @@ from .recinto_viewset import RecintoViewSet, RecintoSerializer
 from .mesa_viewset import MesaElectoralViewSet, MesaElectoralSerializer
 from .candidatura_viewset import CandidaturaViewSet, CandidaturaSerializer
 from .papeleta_viewset import PapeletaViewSet, PapeletaSerializer
+from .jurado_proxy import JuradosExternosAPIView

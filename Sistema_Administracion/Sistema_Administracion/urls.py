@@ -17,8 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from administracion_electoral.apis import JuradosExternosAPIView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/admin-electoral/', include('administracion_electoral.urls')),
+    path('api/admin-electoral/jurados-disponibles/', JuradosExternosAPIView.as_view()),
 
 ]
