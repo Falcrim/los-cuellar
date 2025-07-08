@@ -1,1 +1,2 @@
-from .persona import Persona
+
+from .users import User
