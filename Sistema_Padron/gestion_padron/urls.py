@@ -5,11 +5,9 @@ from rest_framework.routers import DefaultRouter
 from gestion_padron.apis import VotanteViewSet, VerificarPadronPublico, ListaRecintosDesdeAdminElectoral
 
 router = DefaultRouter()
-router.register(r'padron/votantes', VotanteViewSet)
+router.register(r'votantes', VotanteViewSet)
 
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/', include(router.urls)),
-    path('api/padron/verificar/', VerificarPadronPublico.as_view()),
-    path('api/padron/recintos/', ListaRecintosDesdeAdminElectoral.as_view()),
+urlpatterns = router.urls + [
+    path('verificar/', VerificarPadronPublico.as_view(), name='verificar-padron'),
+    path('recintos/', ListaRecintosDesdeAdminElectoral.as_view(), name='recintos-desde-admin-electoral'),
 ]
