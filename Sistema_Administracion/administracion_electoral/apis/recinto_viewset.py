@@ -1,5 +1,7 @@
-from rest_framework import serializers, viewsets
+from rest_framework import serializers, viewsets, permissions, status
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+
 from administracion_electoral.models.recinto import Recinto
 from administracion_electoral.permissions import IsAdminElectoral
 
@@ -13,4 +15,17 @@ class RecintoSerializer(serializers.ModelSerializer):
 class RecintoViewSet(viewsets.ModelViewSet):
     queryset = Recinto.objects.all()
     serializer_class = RecintoSerializer
-    permission_classes = [IsAuthenticated, IsAdminElectoral]
+
+    def get_permissions(self):
+        if self.action in ['list', 'retrieve']:
+            return [permissions.IsAuthenticated()]
+        return [IsAdminElectoral]
+
+    def list(self, request, *args, **kwargs):
+        user = request.user
+
+        # ✅ Permitimos a AdminElectoral y AdminPadron
+        if not hasattr(user, "role") or user.role not in ["AdminElectoral", "AdminPadron"]:
+            return Response({"detail": "No tienes permiso para ver los recintos."}, status=status.HTTP_403_FORBIDDEN)
+
+        return super().list(request, *args, **kwargs)

@@ -2,18 +2,16 @@
 import requests
 from django.conf import settings
 
-def obtener_jurados():
+def obtener_jurados(user_token):
     url = f"{settings.API_ACCESOS_URL}?role=Jurado"
     headers = {
-        "Authorization": f"Bearer {settings.API_ACCESOS_TOKEN}"
-    }
-    params = {
-        "role": "Jurado"
+        "Authorization": f"Bearer {user_token}"
     }
 
-    response = requests.get(url, headers=headers, params=params)
+    response = requests.get(url, headers=headers)
 
     if response.status_code == 200:
         return response.json()
     else:
         raise Exception(f"Error al obtener jurados: {response.status_code} - {response.text}")
+

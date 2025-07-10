@@ -9,7 +9,8 @@ class JuradosExternosAPIView(APIView):
 
     def get(self, request):
         try:
-            jurados = obtener_jurados()
+            user_token = request.auth
+            jurados = obtener_jurados(user_token)
             return Response(jurados)
         except Exception as e:
             return Response({"error": str(e)}, status=500)
