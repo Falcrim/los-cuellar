@@ -5,3 +5,4 @@ from .recinto import Recinto
 from .mesa import MesaElectoral
 from .candidatura import Candidatura
 from .papeleta import Papeleta
+from .mesa import MesaElectoral

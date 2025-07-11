@@ -11,6 +11,7 @@ class Votante(models.Model):
     foto_votante = models.ImageField(upload_to="votantes/")
     recinto_id = models.PositiveIntegerField()  # Sale del recinto Muajajaja
     recinto_nombre = models.CharField(max_length=255)
+    mesa_id = models.PositiveIntegerField(null=True, blank=True)
 
     def __str__(self):
         return self.nombre_completo

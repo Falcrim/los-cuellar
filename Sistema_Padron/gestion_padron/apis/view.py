@@ -18,6 +18,7 @@ class VerificarPadronPublico(APIView):
             return Response({
                 "nombre_completo": votante.nombre_completo,
                 "recinto": votante.recinto_nombre,
+                "recinto_id": votante.recinto_id,
             })
         except Votante.DoesNotExist:
             return Response({"error": "No encontrado en padrón."}, status=404)

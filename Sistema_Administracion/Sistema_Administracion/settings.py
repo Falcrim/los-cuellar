@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
+import os
 from datetime import timedelta
 from pathlib import Path
 
@@ -140,3 +141,5 @@ SIMPLE_JWT = {
 
 API_ACCESOS_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUyMDA3NzUzLCJpYXQiOjE3NTIwMDQxNTMsImp0aSI6IjJiMGJiZTExYWU1ZTQwNmNiYTA0ZjJiZTFlOTI3YjJjIiwidXNlcl9pZCI6MSwidXNlcm5hbWUiOiJzaXN0ZW1hX2ludGVybm8iLCJyb2xlIjoiU3VwZXJBZG1pbiJ9.gY2dVDvXOIzPKyx91U8zar-HnlNC7Ts4WcjgIBFui6U"
 API_ACCESOS_URL = "http://localhost:8000/gestion/users/"
+
+API3_BASE_URL = os.getenv('API3_URL', 'http://localhost:8002')
