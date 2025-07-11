@@ -44,13 +44,13 @@ export const LoginForm = () => {
           navigate(URLS.HOME); 
           break;
         case "AdminElectoral":
-          navigate(URLS.RECINTOS.LIST);
+          navigate(URLS.SECCIONES.LIST);
           break;
         case "Jurado":
           navigate("/jurado/dashboard");
           break;
         case "AdminPadron":
-          navigate("/admin-padron/dashboard");
+          navigate(URLS.VOTANTES.LIST);
           break;
         default:
           navigate("/");

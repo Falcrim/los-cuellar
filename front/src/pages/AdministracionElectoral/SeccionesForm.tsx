@@ -5,19 +5,19 @@ import { useAuth } from "../../hooks/useAuth";
 import { SeccionService } from "../../services/AdminElectoralService/SeccionService";
 import type { Seccion } from "../../models/adminElectoral/Seccion";
 import { URLS } from "../../navigation/CONTANTS";
-import { Menu } from "../../components/Menu";
 import { Container } from "../../components/Container";
 import { Card } from "../../components/Card";
 import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
-import { MapaSelector } from "../../components/MapaSelector"; // verifica que esta ruta es correcta
+import { MapaSelector } from "../../components/MapaSelector";
+import { MenuElectoral } from "../../components/MenuElectoral";
 
 const seccionService = new SeccionService();
 
 type SeccionFormData = {
   nombre: string;
   descripcion: string;
-  area_geografica: string; // JSON string de [number, number][]
+  area_geografica: string;
 };
 
 export const SeccionForm = () => {
@@ -102,7 +102,7 @@ export const SeccionForm = () => {
 
   return (
     <>
-      <Menu />
+      <MenuElectoral />
       <Container>
         <Card title={id ? "Editar Sección" : "Crear Sección"}>
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 max-w-lg mx-auto">
@@ -131,7 +131,6 @@ export const SeccionForm = () => {
                 Área Geográfica (clic en el mapa para seleccionar puntos)
               </label>
 
-              {/* Mantenemos el textarea oculto solo para registro en el form */}
               <textarea
                 id="area_geografica"
                 {...register("area_geografica", {

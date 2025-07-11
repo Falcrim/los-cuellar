@@ -3,14 +3,13 @@ import { useNavigate } from "react-router";
 import { useAuth } from "../../hooks/useAuth";
 import { SeccionService } from "../../services/AdminElectoralService/SeccionService";
 import type { Seccion } from "../../models/adminElectoral/Seccion";
-
-import { Menu } from "../../components/Menu";
 import { Container } from "../../components/Container";
 import { Card } from "../../components/Card";
 import { Button } from "../../components/Button";
 import { Table } from "../../components/Table";
 import { URLS } from "../../navigation/CONTANTS";
 import { MapaSelector } from "../../components/MapaSelector";
+import { MenuElectoral } from "../../components/MenuElectoral";
 
 export const SeccionesList = () => {
   const navigate = useNavigate();
@@ -44,7 +43,7 @@ export const SeccionesList = () => {
 
   return (
     <>
-      <Menu />
+      <MenuElectoral />
       <Container>
         <Card title="Lista de Secciones" className="text-center">
           <div className="text-right mb-4">
@@ -93,6 +92,18 @@ export const SeccionesList = () => {
                         title="Ver Recintos"
                         onClick={() =>
                           navigate(`${URLS.RECINTOS.LIST}?seccionId=${seccion.id}`)
+                        }
+                      />
+                      <Button
+                        title="Ver Elecciones"
+                        onClick={() =>
+                          navigate(`${URLS.ELECCIONES.LIST}?seccionId=${seccion.id}`)
+                        }
+                      />
+                      <Button
+                        title="Ver Cargos"
+                        onClick={() =>
+                          navigate(`${URLS.CARGOS.LIST}?seccionId=${seccion.id}`)
                         }
                       />
                     </td>

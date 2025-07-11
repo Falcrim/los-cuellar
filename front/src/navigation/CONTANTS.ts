@@ -25,4 +25,28 @@ export const URLS = {
     EDIT: "/secciones/:id",
     UPDATE: (id: number) => `/secciones/${id}`,
   },
+  ELECCIONES: {
+    LIST: "/elecciones",
+    CREATE: "/elecciones/create",
+    EDIT: "/elecciones/:id",
+    UPDATE: (id: number) => `/elecciones/${id}`,
+  },
+  CARGOS: {
+  LIST: "/cargos",
+  CREATE: "/cargos/create",
+  EDIT: "/cargos/:id",
+  UPDATE: (id: number) => `/cargos/${id}`
+  },
+    CANDIDATURAS: {
+    LIST: "/candidaturas",
+    CREATE: "/candidaturas/create",
+    EDIT: "/candidaturas/:id",
+    UPDATE: (id: number) => `/candidaturas/${id}`,
+  },
+  VOTANTES: {
+    LIST: "/votantes",
+    CREATE: "/votantes/create",
+    EDIT: "/votantes/:id",
+    UPDATE: (id: number) => `/votantes/${id}`,
+  },
 };

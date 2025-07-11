@@ -11,6 +11,14 @@ import { RecintoForm } from "../pages/AdministracionElectoral/RecintoForm";
 import { MesaForm } from "../pages/AdministracionElectoral/MesaForm";
 import { SeccionesList } from "../pages/AdministracionElectoral/SeccionesList";
 import { SeccionForm } from "../pages/AdministracionElectoral/SeccionesForm";
+import { EleccionForm } from "../pages/AdministracionElectoral/EleccionForm";
+import { EleccionList } from "../pages/AdministracionElectoral/EleccionList";
+import { CargoForm } from "../pages/AdministracionElectoral/CargoForm";
+import { CargoList } from "../pages/AdministracionElectoral/CargoList";
+import { CandidaturaList } from "../pages/AdministracionElectoral/CandidaturaList";
+import { CandidaturaForm } from "../pages/AdministracionElectoral/CandidaturaForm";
+import { VotanteForm } from "../pages/PadronElectoral/VotanteForm";
+import { VotanteList } from "../pages/PadronElectoral/VotanteList";
 
 export const RouterConfig = () => {
   return (
@@ -105,6 +113,103 @@ export const RouterConfig = () => {
         element={
           <ProtectedRoute>
             <SeccionForm />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path={URLS.ELECCIONES.LIST}
+        element={
+          <ProtectedRoute>
+            <EleccionList />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path={URLS.ELECCIONES.CREATE}
+        element={
+          <ProtectedRoute>
+            <EleccionForm />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path={URLS.ELECCIONES.EDIT}
+        element={
+          <ProtectedRoute>
+            <EleccionForm />
+          </ProtectedRoute>
+        }
+      />
+
+      <Route
+        path={URLS.CARGOS.LIST}
+        element={
+          <ProtectedRoute>
+            <CargoList />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path={URLS.CARGOS.CREATE}
+        element={
+          <ProtectedRoute>
+            <CargoForm />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path={URLS.CARGOS.EDIT}
+        element={
+          <ProtectedRoute>
+            <CargoForm />
+          </ProtectedRoute>
+        }
+      />
+    <Route
+      path={URLS.CANDIDATURAS.LIST}
+      element={
+        <ProtectedRoute>
+          <CandidaturaList />
+        </ProtectedRoute>
+      }
+    />
+    <Route
+      path={URLS.CANDIDATURAS.CREATE}
+      element={
+        <ProtectedRoute>
+          <CandidaturaForm />
+        </ProtectedRoute>
+      }
+    />
+    <Route
+      path={URLS.CANDIDATURAS.EDIT}
+      element={
+        <ProtectedRoute>
+          <CandidaturaForm />
+        </ProtectedRoute>
+      }
+    />
+    <Route
+        path={URLS.VOTANTES.LIST}
+        element={
+          <ProtectedRoute>
+            <VotanteList />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path={URLS.VOTANTES.CREATE}
+        element={
+          <ProtectedRoute>
+            <VotanteForm />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path={URLS.VOTANTES.EDIT}
+        element={
+          <ProtectedRoute>
+            <VotanteForm />
           </ProtectedRoute>
         }
       />

@@ -60,7 +60,7 @@ export const RegisterForm = () => {
     const userData = {
       username: data.username,
       role: data.role,
-      ...(data.password && { password: data.password }), // solo incluir si hay contraseña
+      ...(data.password && { password: data.password }),
     };
 
     const action = isEdit

@@ -3,7 +3,6 @@ import { useForm, type SubmitHandler } from "react-hook-form";
 import { useNavigate, useParams } from "react-router";
 import { RecintoService } from "../../services/AdminElectoralService/RecintoService";
 import { URLS } from "../../navigation/CONTANTS";
-import { Menu } from "../../components/Menu";
 import { Container } from "../../components/Container";
 import { Card } from "../../components/Card";
 import { FormField } from "../../components/FormField";
@@ -16,6 +15,7 @@ import L from "leaflet";
 import iconRetinaUrl from "leaflet/dist/images/marker-icon-2x.png";
 import iconUrl from "leaflet/dist/images/marker-icon.png";
 import shadowUrl from "leaflet/dist/images/marker-shadow.png";
+import { MenuElectoral } from "../../components/MenuElectoral";
 
 interface IconDefaultWithGetIconUrl extends L.Icon.Default {
   _getIconUrl?: () => void;
@@ -112,7 +112,7 @@ export const RecintoForm = () => {
 
   return (
     <>
-      <Menu />
+      <MenuElectoral />
       <Container>
         <Card title={id ? "Editar Recinto" : "Crear Recinto"} className="mx-5 my-5">
           <form onSubmit={handleSubmit(onSubmit)}>

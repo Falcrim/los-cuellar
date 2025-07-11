@@ -1,6 +1,6 @@
 export interface Eleccion {
     id:        number;
     tipo:      string;
-    fecha:     Date;
+    fecha:     string;
     secciones: number[];
 }

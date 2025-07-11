@@ -5,13 +5,13 @@ import type { Mesa } from "../../models/adminElectoral/Mesa";
 import { useAuth } from "../../hooks/useAuth";
 import { RecintoService } from "../../services/AdminElectoralService/RecintoService";
 import { MesaService } from "../../services/AdminElectoralService/MesaService";
-import { Menu } from "../../components/Menu";
 import { Container } from "../../components/Container";
 import { Card } from "../../components/Card";
 import { Button } from "../../components/Button";
 import { URLS } from "../../navigation/CONTANTS";
 import { Table } from "../../components/Table";
 import { MapView } from "../../components/MapView";
+import { MenuElectoral } from "../../components/MenuElectoral";
 
 export const RecintoList = () => {
   const navigate = useNavigate();
@@ -21,7 +21,6 @@ export const RecintoList = () => {
   const [recintos, setRecintos] = useState<Recinto[]>([]);
   const [mesas, setMesas] = useState<Mesa[]>([]);
 
-  // Leer el id de la sección desde query param
   const seccionIdParam = searchParams.get("seccionId");
   const seccionId = seccionIdParam ? Number(seccionIdParam) : null;
 
@@ -31,7 +30,6 @@ export const RecintoList = () => {
 
     Promise.all([recintoService.getRecintos(), mesaService.getMesas()])
       .then(([recintosData, mesasData]) => {
-        // Si seccionId está presente, filtrar recintos solo de esa sección
         if (seccionId) {
           setRecintos(recintosData.filter((r) => r.seccion === seccionId));
         } else {
@@ -79,7 +77,7 @@ export const RecintoList = () => {
 
   return (
     <>
-      <Menu />
+      <MenuElectoral />
       <Container>
         <Card title={`Lista de Recintos${seccionId ? ` - Sección ${seccionId}` : ""}`} className="text-center">
           <div className="text-right mb-4">

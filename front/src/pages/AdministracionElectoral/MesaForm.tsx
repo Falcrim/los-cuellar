@@ -5,12 +5,12 @@ import { useForm, type SubmitHandler } from "react-hook-form";
 import { UsuarioService } from "../../services/UsuarioService";
 import { MesaService } from "../../services/AdminElectoralService/MesaService";
 import { URLS } from "../../navigation/CONTANTS";
-import { Menu } from "../../components/Menu";
 import { Container } from "../../components/Container";
 import { Card } from "../../components/Card";
 import { FormField } from "../../components/FormField";
 import { Input } from "../../components/Input";
 import { Button } from "../../components/Button";
+import { MenuElectoral } from "../../components/MenuElectoral";
 
 type Inputs = {
   numero: number;
@@ -33,7 +33,6 @@ export const MesaForm = () => {
   } = useForm<Inputs>();
 
   useEffect(() => {
-    // Cargar jurados (usuarios con rol "Jurado")
     new UsuarioService()
       .getUsuarios()
       .then((usuarios) => {
@@ -46,7 +45,6 @@ export const MesaForm = () => {
 
   useEffect(() => {
   if (id) {
-    // editar mesa, cargar datos
     new MesaService()
       .getMesaById(Number(id))
       .then((mesa) => {
@@ -61,7 +59,6 @@ export const MesaForm = () => {
         console.error("Error al cargar mesa:", error);
       });
   } else if (recintoId) {
-    // si es crear mesa, setear recinto
     setValue("recinto", Number(recintoId));
   }
 }, [id, recintoId, setValue]);
@@ -89,7 +86,7 @@ export const MesaForm = () => {
 
   return (
     <>
-      <Menu />
+      <MenuElectoral />
       <Container>
         <Card title={id ? "Editar Mesa" : "Crear Mesa"} className="mx-5 my-5">
           <form onSubmit={handleSubmit(onSubmit)}>
