@@ -1,3 +1,4 @@
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import serializers, viewsets, permissions, status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
@@ -15,16 +16,17 @@ class RecintoSerializer(serializers.ModelSerializer):
 class RecintoViewSet(viewsets.ModelViewSet):
     queryset = Recinto.objects.all()
     serializer_class = RecintoSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['seccion']
 
     def get_permissions(self):
         if self.action in ['list', 'retrieve']:
             return [permissions.IsAuthenticated()]
-        return [IsAdminElectoral]
+        return [IsAdminElectoral()]
 
     def list(self, request, *args, **kwargs):
         user = request.user
 
-        # ✅ Permitimos a AdminElectoral y AdminPadron
         if not hasattr(user, "role") or user.role not in ["AdminElectoral", "AdminPadron"]:
             return Response({"detail": "No tienes permiso para ver los recintos."}, status=status.HTTP_403_FORBIDDEN)
 

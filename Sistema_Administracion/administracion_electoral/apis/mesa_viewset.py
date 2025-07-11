@@ -13,13 +13,11 @@ class MesaElectoralSerializer(serializers.ModelSerializer):
         fields = ['id', 'numero', 'recinto', 'recinto_nombre', 'jurado_ids']
 
     def validate_jurado_ids(self, value):
-        # Asegurar que el input sea siempre una lista
         if isinstance(value, int):
             value = [value]
         elif not isinstance(value, list):
             raise serializers.ValidationError("El campo 'jurado_ids' debe ser un entero o una lista de enteros.")
 
-        # Validar que todos los elementos sean enteros
         if not all(isinstance(j, int) for j in value):
             raise serializers.ValidationError("Todos los IDs de jurado deben ser enteros.")
 
@@ -32,7 +30,6 @@ class MesaElectoralSerializer(serializers.ModelSerializer):
         jurados_usados = set()
         for mesa in mesas:
             jurado_ids = mesa.jurado_ids
-            # Forzamos que sea lista
             if isinstance(jurado_ids, int):
                 jurado_ids = [jurado_ids]
             elif not isinstance(jurado_ids, list):

@@ -37,12 +37,12 @@ class PapeletaViewSet(viewsets.ModelViewSet):
         creadas = 0
         for seccion in eleccion.secciones.all():
             if Papeleta.objects.filter(eleccion=eleccion, seccion=seccion).exists():
-                continue  # evitar duplicados
+                continue
 
-            # Cargos que afectan esta sección
+
             cargos = Cargo.objects.filter(secciones=seccion)
 
-            # Candidaturas para estos cargos
+
             candidaturas = Candidatura.objects.filter(cargo__in=cargos)
 
             if candidaturas.exists():
