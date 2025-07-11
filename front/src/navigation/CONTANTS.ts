@@ -48,5 +48,7 @@ export const URLS = {
     CREATE: "/votantes/create",
     EDIT: "/votantes/:id",
     UPDATE: (id: number) => `/votantes/${id}`,
+    VERIFICAR: `/verificar/`,
+  
   },
 };

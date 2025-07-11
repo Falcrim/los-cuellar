@@ -2,7 +2,6 @@ import { Routes, Route } from "react-router";
 import { URLS } from "./CONTANTS";
 import { ProtectedRoute } from "../components/ProtectedRoute";
 
-// Páginas
 import { LoginForm } from "../pages/LoginForm";
 import { RegisterForm } from "../pages/RegisterForm";
 import { HomePage } from "../pages/HomePage";
@@ -19,6 +18,8 @@ import { CandidaturaList } from "../pages/AdministracionElectoral/CandidaturaLis
 import { CandidaturaForm } from "../pages/AdministracionElectoral/CandidaturaForm";
 import { VotanteForm } from "../pages/PadronElectoral/VotanteForm";
 import { VotanteList } from "../pages/PadronElectoral/VotanteList";
+import { Votante } from "../pages/PadronElectoral/Votante";
+
 
 export const RouterConfig = () => {
   return (
@@ -211,6 +212,12 @@ export const RouterConfig = () => {
           <ProtectedRoute>
             <VotanteForm />
           </ProtectedRoute>
+        }
+      />
+      <Route
+        path={URLS.VOTANTES.VERIFICAR}
+        element={
+            <Votante />
         }
       />
     </Routes>

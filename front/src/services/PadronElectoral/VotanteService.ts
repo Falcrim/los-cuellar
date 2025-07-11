@@ -67,4 +67,12 @@ export class VotanteService {
         throw new Error(err.message);
       });
   }
+  verificarRecintoPorCI(ci: string): Promise<{ nombre_completo: string; recinto: string; recinto_id: number }> {
+    return padronClient
+      .get(`verificar/`, { params: { ci } })
+      .then(res => res.data)
+      .catch(err => {
+        throw new Error(err.message);
+      });
+  }
 }
