@@ -10,7 +10,7 @@ class MesaElectoralSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = MesaElectoral
-        fields = ['id', 'numero', 'recinto', 'recinto_nombre', 'jurado_ids']
+        fields = ['id', 'numero', 'recinto', 'recinto_nombre', 'jurado_ids', 'num_votantes']
 
     def validate_jurado_ids(self, value):
         if isinstance(value, int):
