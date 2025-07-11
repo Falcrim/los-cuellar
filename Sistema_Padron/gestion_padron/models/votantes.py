@@ -9,7 +9,7 @@ class Votante(models.Model):
     foto_ci_anverso = models.ImageField(upload_to="ci/anverso/")
     foto_ci_reverso = models.ImageField(upload_to="ci/reverso/")
     foto_votante = models.ImageField(upload_to="votantes/")
-    recinto_id = models.PositiveIntegerField()  # Sale del reciton Muajajaja
+    recinto_id = models.PositiveIntegerField()  # Sale del recinto Muajajaja
     recinto_nombre = models.CharField(max_length=255)
 
     def __str__(self):

@@ -13,9 +13,9 @@ class VotanteSerializer(serializers.ModelSerializer):
 
 class IsPadronAdmin(permissions.BasePermission):
     def has_permission(self, request, view):
-        return request.user and getattr(request.user, 'role', '') == 'AdminPadron'
+        return request.user.is_authenticated and request.user.role == 'AdminPadron'
 
 class VotanteViewSet(viewsets.ModelViewSet):
     queryset = Votante.objects.all()
     serializer_class = VotanteSerializer
-    permission_classes = [permissions.IsAuthenticated, IsPadronAdmin]
+    permission_classes = [IsPadronAdmin]

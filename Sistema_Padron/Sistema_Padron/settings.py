@@ -124,12 +124,13 @@ CORS_ALLOW_ALL_ORIGINS = True  #En desarrollo jijiji
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'gestion_padron.authentication.ExternalJWTAuthentication',
+        #'rest_framework_simplejwt.authentication.JWTAuthentication',
     )
 }
 
 SIMPLE_JWT = {
-    "SIGNING_KEY": "una-clave-secreta-compartida-solo-para-jwt",  # misma que en las otras APIs
+    "SIGNING_KEY": "una-clave-secreta-compartida-solo-para-jwt",
     "ACCESS_TOKEN_LIFETIME": timedelta(hours=3),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
     "AUTH_HEADER_TYPES": ("Bearer",),
